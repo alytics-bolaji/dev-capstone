@@ -93,12 +93,12 @@ jobs:
 
             # Login to GHCR on the EC2 instance
             echo '${{ secrets.GHCR_TOKEN }}' | \
-              docker login ghcr.io \
+              sudo docker login ghcr.io \
               -u '${{ github.actor }}' \
               --password-stdin
 
             # Pull the new image
-            docker pull \
+            sudo docker pull \
               ghcr.io/${{ github.repository_owner }}/devops-capstone-api:${{ needs.build-and-push.outputs.image-tag }}
 
             # Zero-downtime rolling deploy:
