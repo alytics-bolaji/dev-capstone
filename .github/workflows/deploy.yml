@@ -103,12 +103,12 @@ jobs:
 
             # Zero-downtime rolling deploy:
             # Start new containers, then remove old ones
-            docker compose -f docker-compose.prod.yml up -d \
+            sudo docker compose -f docker-compose.prod.yml up -d \
               --remove-orphans \
               --wait
 
             # Remove old/dangling images to free disk space
-            docker image prune -f
+            sudo docker image prune -f
 
             echo 'Deployment complete!'
-            docker compose -f docker-compose.prod.yml ps
+            sudo docker compose -f docker-compose.prod.yml ps
