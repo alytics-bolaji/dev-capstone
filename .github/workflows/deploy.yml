@@ -98,8 +98,9 @@ jobs:
               --password-stdin
 
             # Pull the new image
-            sudo docker pull \
-              ghcr.io/${{ github.repository_owner }}/devops-capstone-api:${{ needs.build-and-push.outputs.image-tag }}
+
+            sudo docker pull ghcr.io/${{ github.repository_owner }}/devops-capstone-api:${{ needs.build-and-push.outputs.image-tag }}
+
 
             # Zero-downtime rolling deploy:
             # Start new containers, then remove old ones
